@@ -131,3 +131,25 @@ PRs welcome! Ideas: new shader branches in `js/gl.js` + metadata in `js/effects.
 ## 📄 License
 
 MIT © 2026 aisac-id. MediaPipe assets are Apache-2.0 (Google). See [LICENSE](LICENSE).
+
+---
+
+## Brand &amp; Promotion Kit
+
+Aset branding resmi **Arcam** — logo, software box, poster, banner, dan materi sosial.
+Semua aset berada di folder [`promo/`](promo/) dan bebas dipakai untuk materi promosi proyek ini.
+
+<p align="center">
+  <img src="promo/software-box.png" alt="Arcam software box" width="640">
+</p>
+
+| Aset | Pratinjau | Ukuran |
+|---|---|---|
+| Logo | <img src="promo/logo.png" width="96"> | 1024×1024 |
+| Wordmark | <img src="promo/logo-wordmark.png" width="240"> | 1600×500 |
+| Software Box | <img src="promo/software-box.png" width="240"> | 1600×1200 |
+| Poster | <img src="promo/poster.png" width="160"> | 1200×1600 |
+| Banner | <img src="promo/banner.png" width="280"> | 1920×820 |
+| Social Preview | <img src="promo/social-preview.png" width="240"> | 1280×640 |
+| Feature Showcase | <img src="promo/feature-showcase.png" width="240"> | 1600×1000 |
+| Social Square | <img src="promo/social-square.png" width="120"> | 1080×1080 |
