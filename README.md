@@ -4,6 +4,11 @@
 
 # 📸 ARCAM — AR Camera Studio
 
+<p align="center">
+  <img src="promo/banner.png" alt="Arcam banner" width="100%">
+</p>
+
+
 **Open-source Chrome extension that turns your webcam into an IG/TikTok-style AR camera.**
 23 live GPU filters · 15 face-tracked stickers · particles · one-click WebM recording with audio.
 
@@ -110,20 +115,6 @@ arcam/
 └── icons/
 ```
 
-## 🎁 Promo kit
-
-Brand assets live in [`promo/`](promo/) — free to reuse under the same MIT license:
-
-| Asset | File |
-|---|---|
-| Logo (1024×1024) | [`promo/logo.png`](promo/logo.png) |
-| Software box render | [`promo/software-box.png`](promo/software-box.png) |
-| Promo poster (2:3) | [`promo/poster.png`](promo/poster.png) |
-| Wide banner (16:9) | [`promo/banner.png`](promo/banner.png) |
-| Promo video (8s, 1080p, shared with FaceWatch) | [`promo/promo.mp4`](promo/promo.mp4) |
-
-![ARCAM banner](promo/banner.png)
-
 ## 🤝 Contributing
 
 PRs welcome! Ideas: new shader branches in `js/gl.js` + metadata in `js/effects.js`, new stickers in `js/stickers.js`, hand tracking, GIF export, background segmentation. Keep it dependency-free and on-device.
@@ -132,9 +123,10 @@ PRs welcome! Ideas: new shader branches in `js/gl.js` + metadata in `js/effects.
 
 MIT © 2026 aisac-id. MediaPipe assets are Apache-2.0 (Google). See [LICENSE](LICENSE).
 
+
 ---
 
-## Brand &amp; Promotion Kit
+## Brand & Promotion Kit
 
 Aset branding resmi **Arcam** — logo, software box, poster, banner, dan materi sosial.
 Semua aset berada di folder [`promo/`](promo/) dan bebas dipakai untuk materi promosi proyek ini.
@@ -153,3 +145,5 @@ Semua aset berada di folder [`promo/`](promo/) dan bebas dipakai untuk materi pr
 | Social Preview | <img src="promo/social-preview.png" width="240"> | 1280×640 |
 | Feature Showcase | <img src="promo/feature-showcase.png" width="240"> | 1600×1000 |
 | Social Square | <img src="promo/social-square.png" width="120"> | 1080×1080 |
+
+**Video promosi:** [promo.mp4](promo/promo.mp4)
