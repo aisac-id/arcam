@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="promo/logo.png" alt="ARCAM logo" width="220">
+
 # 📸 ARCAM — AR Camera Studio
 
 **Open-source Chrome extension that turns your webcam into an IG/TikTok-style AR camera.**
@@ -104,8 +106,23 @@ arcam/
 │   ├── face.js            # MediaPipe wrapper
 │   └── audio.js           # WebAudio sfx synth
 ├── vendor/face_mesh/      # local MediaPipe (CSP-patched, see above)
+├── promo/                 # logo, software box, poster, banner, promo video
 └── icons/
 ```
+
+## 🎁 Promo kit
+
+Brand assets live in [`promo/`](promo/) — free to reuse under the same MIT license:
+
+| Asset | File |
+|---|---|
+| Logo (1024×1024) | [`promo/logo.png`](promo/logo.png) |
+| Software box render | [`promo/software-box.png`](promo/software-box.png) |
+| Promo poster (2:3) | [`promo/poster.png`](promo/poster.png) |
+| Wide banner (16:9) | [`promo/banner.png`](promo/banner.png) |
+| Promo video (8s, 1080p, shared with FaceWatch) | [`promo/promo.mp4`](promo/promo.mp4) |
+
+![ARCAM banner](promo/banner.png)
 
 ## 🤝 Contributing
 
