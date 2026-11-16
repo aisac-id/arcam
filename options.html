@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARCAM — Settings</title>
+<link rel="stylesheet" href="css/options.css">
+</head>
+<body>
+
+<div class="aurora" aria-hidden="true">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="grain"></div>
+</div>
+
+<header id="topbar">
+  <div class="brand">
+    <div class="mark"><span></span></div>
+    <div class="brand-text">
+      <h1>ARCAM</h1>
+      <em>Settings</em>
+    </div>
+  </div>
+  <span id="saveState" class="save-pill">all changes saved</span>
+  <div class="top-actions">
+    <button class="btn ghost" id="resetBtn">↺ Reset defaults</button>
+    <button class="btn primary" id="openBtn">▶ Open Studio</button>
+  </div>
+</header>
+
+<main id="page">
+  <p class="lede">These are your <b>startup defaults</b> — applied every time the studio opens,
+  in the sidebar or a full tab. Anything you tweak inside the studio still works live;
+  it just resets to these on the next launch.</p>
+
+  <section class="card enter-1">
+    <h2><i class="ico">✨</i> Startup</h2>
+    <div class="row">
+      <div class="row-text"><label for="startEffect">Default effect</label>
+        <p>Which filter the studio opens with.</p></div>
+      <select id="startEffect"></select>
+    </div>
+    <div class="row">
+      <div class="row-text"><label for="startSource">Default source</label>
+        <p>Live camera asks for permission; demo scene works without one.</p></div>
+      <select id="startSource">
+        <option value="camera">Live camera</option>
+        <option value="demo">Demo scene</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="card enter-2">
+    <h2><i class="ico">🎥</i> Camera & output</h2>
+    <div class="row">
+      <div class="row-text"><label for="resolution">Resolution</label>
+        <p>Requested camera size (also the demo scene size).</p></div>
+      <select id="resolution">
+        <option value="1280x720">HD · 720p</option>
+        <option value="1920x1080">Full HD · 1080p</option>
+        <option value="640x480">VGA · 480p</option>
+      </select>
+    </div>
+    <div class="row">
+      <div class="row-text"><label for="quality">Render quality</label>
+        <p>Lower quality renders fewer pixels — smoother on weak GPUs.</p></div>
+      <select id="quality">
+        <option value="1">Full</option>
+        <option value="0.75">Balanced</option>
+        <option value="0.5">Performance</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="card enter-3">
+    <h2><i class="ico">⏺</i> Capture & recording</h2>
+    <div class="row">
+      <div class="row-text"><label for="bitrate">Recording bitrate</label>
+        <p>Higher = sharper clips, bigger files.</p></div>
+      <select id="bitrate">
+        <option value="4">4 Mbps · small</option>
+        <option value="8">8 Mbps · balanced</option>
+        <option value="12">12 Mbps · crisp</option>
+        <option value="16">16 Mbps · max</option>
+      </select>
+    </div>
+    <div class="row">
+      <div class="row-text"><label for="timer">Photo countdown</label>
+        <p>Default self-timer before a photo.</p></div>
+      <select id="timer">
+        <option value="0">Off</option>
+        <option value="3">3 seconds</option>
+        <option value="10">10 seconds</option>
+      </select>
+    </div>
+    <div class="row">
+      <div class="row-text"><label for="clip">Clip limit</label>
+        <p>Recording stops automatically after this long.</p></div>
+      <select id="clip">
+        <option value="0">Unlimited</option>
+        <option value="15">15 seconds</option>
+        <option value="30">30 seconds</option>
+        <option value="60">60 seconds</option>
+      </select>
+    </div>
+    <div class="row">
+      <div class="row-text"><label for="mic">Record microphone</label>
+        <p>Adds your mic as the clip's audio track.</p></div>
+      <button class="toggle" id="mic" role="switch" aria-checked="false"><i></i></button>
+    </div>
+  </section>
+
+  <section class="card enter-4">
+    <h2><i class="ico">🎛</i> Studio behavior</h2>
+    <div class="row">
+      <div class="row-text"><label for="mirror">Mirror frame</label>
+        <p>Selfie-style flipped preview and recording.</p></div>
+      <button class="toggle" id="mirror" role="switch" aria-checked="true"><i></i></button>
+    </div>
+    <div class="row">
+      <div class="row-text"><label for="sound">Sound effects</label>
+        <p>Shutter, countdown and UI blips. Mute anytime with <kbd>S</kbd>.</p></div>
+      <button class="toggle" id="sound" role="switch" aria-checked="true"><i></i></button>
+    </div>
+    <div class="row">
+      <div class="row-text"><label for="tracking">Face tracking</label>
+        <p>MediaPipe runs locally so stickers follow your face. No frame leaves your machine.</p></div>
+      <button class="toggle" id="tracking" role="switch" aria-checked="true"><i></i></button>
+    </div>
+  </section>
+
+  <footer>
+    MIT © 2026 · settings live in <code>chrome.storage.local</code> on this device only ·
+    <a href="https://github.com/aisac-id/arcam" target="_blank" rel="noopener">source ↗</a>
+  </footer>
+</main>
+
+<div id="toasts"></div>
+<script type="module" src="js/options.js"></script>
+</body>
+</html>

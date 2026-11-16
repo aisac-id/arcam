@@ -32,6 +32,12 @@
     <button class="icon-btn" id="mirrorBtn" title="Mirror (M)" aria-label="Mirror camera">
       <svg viewBox="0 0 24 24"><path d="M11 2h2v20h-2zM9 5 3 12l6 7V5zm6 0v14l6-7-6-7z"/></svg>
     </button>
+    <button class="icon-btn" id="fsBtn" title="Open full screen" aria-label="Full screen">
+      <svg viewBox="0 0 24 24"><path id="fsPath" d="M3 3h8v2H5v6H3V3zm10 0h8v8h-2V5h-6V3zM3 13h2v6h6v2H3v-8zm16 0h2v8h-8v-2h6v-6z"/></svg>
+    </button>
+    <button class="icon-btn" id="settingsBtn" title="Settings" aria-label="Settings">
+      <svg viewBox="0 0 24 24"><path d="M19.4 13a7.8 7.8 0 0 0 0-2l2.1-1.6a.5.5 0 0 0 .1-.7l-2-3.4a.5.5 0 0 0-.6-.2l-2.5 1a7.6 7.6 0 0 0-1.7-1l-.4-2.7a.5.5 0 0 0-.5-.4h-4a.5.5 0 0 0-.5.4l-.4 2.7a7.6 7.6 0 0 0-1.7 1l-2.5-1a.5.5 0 0 0-.6.2l-2 3.4a.5.5 0 0 0 .1.7L4.6 11a7.8 7.8 0 0 0 0 2l-2.1 1.6a.5.5 0 0 0-.1.7l2 3.4c.1.2.4.3.6.2l2.5-1c.5.4 1.1.8 1.7 1l.4 2.7c0 .2.2.4.5.4h4c.2 0 .4-.2.5-.4l.4-2.7a7.6 7.6 0 0 0 1.7-1l2.5 1c.2.1.5 0 .6-.2l2-3.4a.5.5 0 0 0-.1-.7L19.4 13zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg>
+    </button>
     <button class="icon-btn" id="helpBtn" title="Shortcuts & privacy (?)" aria-label="Help">
       <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.9 15.5h-1.8v-1.8h1.8v1.8zm1.6-6.3c-.5.6-1.2 1-1.5 1.6-.2.3-.2.7-.2 1.2h-1.8c0-.8.1-1.3.4-1.8.4-.7 1.1-1.1 1.5-1.7.4-.7.2-1.9-1.1-1.9-1 0-1.5.7-1.7 1.5l-1.7-.7C8.9 8 10 7 11.8 7c1.6 0 2.9.9 2.9 2.4 0 .7-.2 1.3-.6 1.8z"/></svg>
     </button>
@@ -222,6 +228,7 @@
     <button class="modal-x" id="helpX" aria-label="Close">✕</button>
     <h3>ARCAM in 30 seconds</h3>
     <p>Pick an effect, tune it live, stack face stickers, then shoot a photo or record a WebM clip with audio. Click the frame anywhere for a confetti burst — laser eyes follow your cursor.</p>
+    <p>The toolbar icon opens ARCAM in the <b>sidebar</b>. Hit <b>⛶</b> to promote it to a full tab (or go browser-fullscreen there), and the <b>gear</b> opens Settings for startup defaults like effect, resolution and recording bitrate.</p>
     <div class="keys">
       <div><kbd>Space</kbd> record / stop</div>
       <div><kbd>P</kbd> photo</div>

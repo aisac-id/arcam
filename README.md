@@ -26,6 +26,8 @@ Everything runs **100% on-device** — no uploads, no accounts, no tracking.
 - **Demo mode** — a built-in animated neon scene so every feature works even without a camera (or before you grant permission).
 - **Sound design** — tiny WebAudio synth tied to visible events (shutter, countdown beeps, record chirps, effect pops). One mute button up top.
 - **Keyboard shortcuts** — `Space` record · `P` photo · `R` randomize · `M` mirror · `S` sound · `←/→` cycle effects · `?` help.
+- **Sidebar or full screen** — the toolbar icon opens a compact side-panel studio (~¼ of the window); **⛶** promotes it to a full tab / browser fullscreen.
+- **Settings page** — startup defaults for effect, source, resolution, render quality, recording bitrate (4–16 Mbps), countdown, clip limit, mirror, sound, tracking and mic. Auto-saved to `chrome.storage.local`, shared by sidebar and tab.
 - Responsive layout down to phone widths, custom in-palette scrollbars, animated aurora background.
 
 ## 🚀 Install (load unpacked)
@@ -37,7 +39,8 @@ Everything runs **100% on-device** — no uploads, no accounts, no tracking.
 2. Open `chrome://extensions` in Chrome (or any Chromium browser: Edge, Brave, Arc…).
 3. Enable **Developer mode** (top-right toggle).
 4. Click **Load unpacked** and select the `arcam` folder.
-5. Pin the ARCAM icon and click it — the studio opens in a full tab. Allow camera access when prompted (or press **Demo mode**).
+5. Pin the ARCAM icon and click it — the studio opens in the **browser sidebar** (side panel). Allow camera access when prompted (or press **Demo mode**).
+6. Inside the panel, hit **⛶** to promote the studio to a full tab — there, ⛶ toggles browser full screen. The **gear** opens the Settings page.
 
 > Requires a Chromium-based browser with WebGL. No build step, no dependencies to install — the repo is the extension.
 
@@ -57,7 +60,7 @@ Everything runs **100% on-device** — no uploads, no accounts, no tracking.
 
 - Camera frames, face landmarks, photos and recordings **never leave your machine**.
 - MediaPipe FaceMesh ships inside the extension (`vendor/face_mesh/`) and runs as local WASM — no CDN, no network calls at runtime.
-- The extension requests **no host permissions** and declares no content scripts. The only permission prompt is the standard camera/microphone one, triggered by you.
+- The extension requests **no host permissions** and declares no content scripts. The only permission prompt is the standard camera/microphone one, triggered by you. `sidePanel` and `storage` are used purely for the sidebar and local settings.
 - Recordings are kept in memory until you press **Download**; discarding frees them immediately.
 
 ## 🧠 Tech notes
@@ -84,12 +87,16 @@ If you upgrade MediaPipe, re-apply these patches (search for `createNamedFunctio
 
 ```
 arcam/
-├── manifest.json          # MV3 manifest (no host permissions)
-├── background.js          # toolbar click → opens studio tab
-├── studio.html            # the whole app shell
+├── manifest.json          # MV3 manifest (sidePanel + storage, no host permissions)
+├── background.js          # toolbar click → opens the sidebar panel
+├── studio.html            # the whole app shell (sidebar + full tab)
+├── options.html           # Settings page (startup defaults)
 ├── css/studio.css         # palette, layout, components, motion
+├── css/options.css        # Settings page styling
 ├── js/
 │   ├── app.js             # orchestrator: state, UI, capture, loop
+│   ├── settings.js        # shared defaults model (chrome.storage.local)
+│   ├── options.js         # Settings page logic
 │   ├── gl.js              # WebGL pipeline + uber-shader
 │   ├── effects.js         # effect & sticker metadata
 │   ├── stickers.js        # face-anchored canvas renderer

@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
   "name": "ARCAM — AR Camera Studio",
-  "version": "1.0.0",
-  "description": "23 live AR filters, face-tracked stickers, particles and one-click WebM recording. IG/TikTok-style camera effects, 100% local & open source.",
+  "version": "1.1.0",
+  "description": "23 live AR filters, face-tracked stickers, particles and one-click WebM recording. Opens in the sidebar or full screen. 100% local & open source.",
   "action": {
-    "default_title": "Open ARCAM Studio",
+    "default_title": "Open ARCAM sidebar",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
@@ -14,6 +14,14 @@
   "background": {
     "service_worker": "background.js"
   },
+  "side_panel": {
+    "default_path": "studio.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "permissions": ["sidePanel", "storage"],
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",

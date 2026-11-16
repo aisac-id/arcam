@@ -7,6 +7,7 @@ import { anchors, fallbackAnchors, drawStickers } from "./stickers.js";
 import { Particles } from "./particles.js";
 import { FaceTracker } from "./face.js";
 import { sfx, setSound } from "./audio.js";
+import { loadSettings } from "./settings.js";
 
 const $ = (id) => document.getElementById(id);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -30,6 +31,7 @@ const state = {
   tracking: true,
   source: "demo",
   quality: 1,
+  bitrate: 8,
   category: "All",
   search: "",
 };
@@ -508,7 +510,9 @@ function useDemo() {
   $("sourceSel").value = "demo";
   $("srcNote").textContent = "demo";
   $("camGate").classList.add("hidden");
-  setStageSize(1280, 720);
+  const [rw, rh] = $("resSel").value.split("x").map(Number);
+  demo.width = rw; demo.height = rh;
+  setStageSize(rw, rh);
   persist();
 }
 
@@ -634,7 +638,7 @@ async function startRecording() {
   try {
     recorder = new MediaRecorder(stream, {
       ...(recMime ? { mimeType: recMime } : {}),
-      videoBitsPerSecond: 8_000_000,
+      videoBitsPerSecond: state.bitrate * 1_000_000,
     });
   } catch (e) {
     console.error(e);
@@ -929,6 +933,26 @@ function wire() {
   $("demoBtn").onclick = () => { useDemo(); toast("Demo mode — play away!"); };
 
   $("helpBtn").onclick = () => $("helpModal").classList.remove("hidden");
+
+  $("settingsBtn").onclick = () => {
+    sfx.toggle();
+    chrome.runtime.openOptionsPage();
+  };
+  $("fsBtn").onclick = async () => {
+    sfx.toggle();
+    if (isPanel) {
+      // promote the sidebar studio to a full browser tab, then close the panel
+      await chrome.tabs.create({ url: chrome.runtime.getURL("studio.html") });
+      window.close();
+    } else if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      document.documentElement.requestFullscreen().catch(() => {
+        toast("Full screen was blocked by the browser");
+      });
+    }
+  };
+  if (isPanel) $("fsBtn").title = "Open in full tab";
   $("helpX").onclick = () => $("helpModal").classList.add("hidden");
   $("helpModal").addEventListener("click", (e) => {
     if (e.target === $("helpModal")) $("helpModal").classList.add("hidden");
@@ -994,8 +1018,30 @@ function wire() {
 
 /* ── boot ──────────────────────────────────────────────────── */
 
+// The side panel is narrow; a full tab is wide. In panel mode the ⛶ button
+// promotes the studio to a tab, in a tab it toggles browser full screen.
+const isPanel = window.innerWidth < 720;
+
+function applySettings(s) {
+  if (s.startEffect !== "last" && EFFECTS.some((f) => f.key === s.startEffect)) {
+    state.fxKey = s.startEffect;
+  }
+  state.mirror = s.mirror;
+  state.sound = s.sound;
+  state.tracking = s.tracking;
+  state.mic = s.mic;
+  state.quality = s.quality;
+  state.bitrate = s.bitrate;
+  $("resSel").value = s.resolution;
+  $("timerSel").value = String(s.timer);
+  $("clipSel").value = String(s.clip);
+}
+
 async function boot() {
   restore();
+  const settings = await loadSettings();
+  applySettings(settings);
+  document.body.classList.toggle("panel-mode", isPanel);
   try {
     gl = new GLPipeline(glCanvas);
   } catch (e) {
@@ -1033,8 +1079,13 @@ async function boot() {
 
   // camera & tracker load async — demo scene renders instantly meanwhile
   tracker.init();
-  const ok = await startCamera();
-  if (ok) toast("Camera live — pick an effect and play ✨");
+  if (settings.startSource === "demo") {
+    useDemo();
+    toast("Demo mode (Settings default) — switch to camera anytime");
+  } else {
+    const ok = await startCamera();
+    if (ok) toast("Camera live — pick an effect and play ✨");
+  }
 }
 
 boot();
